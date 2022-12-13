@@ -10,6 +10,9 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		13F0F9092946D19F00AA1665 /* 3DModel_LowPoly.obj in Resources */ = {isa = PBXBuildFile; fileRef = 13F0F9062946D19F00AA1665 /* 3DModel_LowPoly.obj */; };
+		13F0F90A2946D19F00AA1665 /* 3DModel_LowPoly.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 13F0F9072946D19F00AA1665 /* 3DModel_LowPoly.mtl */; };
+		13F0F90B2946D19F00AA1665 /* 3DModel_LowPoly.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 13F0F9082946D19F00AA1665 /* 3DModel_LowPoly.jpg */; };
 		1E61B82C3D905C9A7F05DE2B /* libPods-example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 474B3F65290D0BA4B0BFC336 /* libPods-example.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		D9AF8AE627A8155F0092FA00 /* demon.model in Resources */ = {isa = PBXBuildFile; fileRef = D9AF8AE427A8155F0092FA00 /* demon.model */; };
@@ -25,6 +28,9 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = example/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = example/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = example/main.m; sourceTree = "<group>"; };
+		13F0F9062946D19F00AA1665 /* 3DModel_LowPoly.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = 3DModel_LowPoly.obj; path = ../data/3DModel_LowPoly.obj; sourceTree = "<group>"; };
+		13F0F9072946D19F00AA1665 /* 3DModel_LowPoly.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = 3DModel_LowPoly.mtl; path = ../data/3DModel_LowPoly.mtl; sourceTree = "<group>"; };
+		13F0F9082946D19F00AA1665 /* 3DModel_LowPoly.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 3DModel_LowPoly.jpg; path = ../data/3DModel_LowPoly.jpg; sourceTree = "<group>"; };
 		33331AD55FF2BC24C151459E /* Pods-example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example.release.xcconfig"; path = "Target Support Files/Pods-example/Pods-example.release.xcconfig"; sourceTree = "<group>"; };
 		474B3F65290D0BA4B0BFC336 /* libPods-example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = example/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -80,6 +86,9 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				13F0F9082946D19F00AA1665 /* 3DModel_LowPoly.jpg */,
+				13F0F9072946D19F00AA1665 /* 3DModel_LowPoly.mtl */,
+				13F0F9062946D19F00AA1665 /* 3DModel_LowPoly.obj */,
 				D9AF8AE427A8155F0092FA00 /* demon.model */,
 				D9AF8AE527A8155F0092FA00 /* demon.png */,
 				13B07FAE1A68108700A75B9A /* example */,
@@ -174,9 +183,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				13F0F9092946D19F00AA1665 /* 3DModel_LowPoly.obj in Resources */,
+				13F0F90B2946D19F00AA1665 /* 3DModel_LowPoly.jpg in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				D9AF8AE627A8155F0092FA00 /* demon.model in Resources */,
 				D9AF8AE727A8155F0092FA00 /* demon.png in Resources */,
+				13F0F90A2946D19F00AA1665 /* 3DModel_LowPoly.mtl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
