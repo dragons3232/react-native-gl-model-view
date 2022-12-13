@@ -73,6 +73,36 @@ RCT_CUSTOM_VIEW_PROPERTY(model, NSDictionary, RNGLModelView)
   view.model = model;
 }
 
+- (UIImage *)imageFromColor:(UIColor *)color {
+    CGRect rect = CGRectMake(0, 0, 100, 100);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
+
+- (NSString*) lineWithString: (NSString*)keyword from: (NSString *)content{
+    NSString* line = [content substringFromIndex:[content rangeOfString: keyword].location + keyword.length];
+    return [[line substringToIndex: [line rangeOfString: @"\n"].location] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+}
+
+- (NSString*) contentOfUri:(NSString*) uri {
+    bool isAsset = [uri rangeOfString:@"file:/"].location == NSNotFound;
+    if(isAsset){
+        NSArray* parts = [uri componentsSeparatedByString:@"."];
+        NSString* extension =  [NSString stringWithFormat:@".%@", [[parts reverseObjectEnumerator] allObjects][0]];
+        NSString* fileName = [uri stringByReplacingOccurrencesOfString:extension withString: @""];
+        NSString* path = [[NSBundle mainBundle] pathForResource:fileName ofType:extension];
+        return [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:NULL];
+    } else {
+        NSString *path = [uri stringByReplacingOccurrencesOfString:@"file:/" withString:@""];
+        return  [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    }
+}
+
 // Loads a texture - PVR + all formats supported by UIImage
 RCT_CUSTOM_VIEW_PROPERTY(texture, NSDictionary, RNGLModelView)
 {
@@ -81,9 +111,27 @@ RCT_CUSTOM_VIEW_PROPERTY(texture, NSDictionary, RNGLModelView)
   NSString *uri  = [dictionary objectForKey:@"uri"];
   // XXX: This line is a hack for the custom view property of flipTexture.
   textureUri = uri;
-  if (view.textureFlipped) {
-    [self flipTextureForView:view
-                     withUri: uri];
+    if([uri rangeOfString:@".mtl"].location != NSNotFound){
+        NSString* content = [self contentOfUri:uri];
+        
+        if(false && [content rangeOfString: @"map_Kd"].location != NSNotFound){
+            NSString* line = [self lineWithString:@"map_Kd" from: content];
+            view.texture = [self resolveGLImageFromUri: line];
+        } else {
+            NSString* line = [self lineWithString:@"Kd" from: content];
+            NSArray* parts = [line componentsSeparatedByString: @" "];
+            float red = [parts[0] floatValue];
+            float green = [parts[1] floatValue];
+            float blue = [parts[2] floatValue];
+            UIColor *color = [UIColor colorWithRed: red
+                                             green: green
+                                              blue: blue
+                                             alpha:1.0f];
+            UIImage *image =  [self imageFromColor: color];
+            view.texture =  [GLImage imageWithUIImage:image];
+        }
+    } else if (view.textureFlipped) {
+    [self flipTextureForView:view withUri: uri];
   } else {
     view.texture = [self resolveGLImageFromUri: uri];
   }
